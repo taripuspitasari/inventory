@@ -1,0 +1,62 @@
+# Ignore all files in the inventory folder
+inventory/*
+
+# Allow specific files or folders if needed
+!inventory/.gitignore
+
+# Ignore files in the server folder
+inventory/server/node_modules/
+inventory/server/logs/
+inventory/server/*.log
+inventory/server/.env
+inventory/server/.env.local
+inventory/server/.env.development.local
+inventory/server/.env.test.local
+inventory/server/.env.production.local
+inventory/server/build/
+inventory/server/dist/
+inventory/server/.temp/
+inventory/server/*.tmp
+inventory/server/.cache/
+inventory/server/cache/
+inventory/server/*.cache
+inventory/server/*.bak
+inventory/server/*.swp
+inventory/server/.vscode/
+inventory/server/.idea/
+inventory/server/*.iml
+inventory/server/.DS_Store
+inventory/server/Thumbs.db
+inventory/server/package-lock.json
+inventory/server/yarn.lock
+
+# Ignore files in the client folder
+inventory/client/node_modules/
+inventory/client/logs/
+inventory/client/*.log
+inventory/client/.env
+inventory/client/.env.local
+inventory/client/.env.development.local
+inventory/client/.env.test.local
+inventory/client/.env.production.local
+inventory/client/build/
+inventory/client/dist/
+inventory/client/.temp/
+inventory/client/*.tmp
+inventory/client/.cache/
+inventory/client/cache/
+inventory/client/*.cache
+inventory/client/*.bak
+inventory/client/*.swp
+inventory/client/.vscode/
+inventory/client/.idea/
+inventory/client/*.iml
+inventory/client/.DS_Store
+inventory/client/Thumbs.db
+inventory/client/package-lock.json
+inventory/client/yarn.lock
+
+# Specific ignores for inventory folder
+inventory/*.log
+inventory/.DS_Store
+inventory/Thumbs.db
