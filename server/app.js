@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("kenapa tadi gabisa anjing");
+  res.send("Ini nanti buat public aja");
 });
 
 app.use("/api", controllers);

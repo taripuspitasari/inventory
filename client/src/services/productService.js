@@ -1,7 +1,7 @@
 import axios from "axios";
 const baseUrl = "http://localhost:3001/api/products";
 
-const getAll = async () => {
+const getAllProducts = async () => {
   const response = await axios.get(baseUrl);
   return response.data;
 };
@@ -22,7 +22,7 @@ const deleteProduct = async id => {
 };
 
 export default {
-  getAll,
+  getAllProducts,
   addProduct,
   updateProduct,
   deleteProduct,

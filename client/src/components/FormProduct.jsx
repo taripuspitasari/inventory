@@ -1,8 +1,31 @@
 import {useContext, useState} from "react";
 import {ProductContext} from "../contexts/ProductContext";
 
+const SelectSet = ({label, name, form, handleChange, options}) => {
+  return (
+    <label className="input input-bordered input-sm flex items-center gap-2">
+      {label}
+      <select
+        className="select select-ghost select-xs w-full"
+        name={name}
+        value={form[name]}
+        onChange={handleChange}
+      >
+        <option disabled value="">
+          Select {label}
+        </option>
+        {options.map(option => (
+          <option key={option.id} value={option.id}>
+            {option.name}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+};
+
 const FormProduct = () => {
-  const {addProduct} = useContext(ProductContext);
+  const {addProduct, categories, suppliers} = useContext(ProductContext);
   const [form, setForm] = useState({
     name: "",
     description: "",
@@ -72,38 +95,23 @@ const FormProduct = () => {
               onChange={handleChange}
             />
           </label>
-          <label className="input input-bordered input-sm flex items-center gap-2">
-            Category
-            <select
-              className="select select-ghost select-xs w-full"
-              name="category_id"
-              value={form.category_id}
-              onChange={handleChange}
-            >
-              <option disabled value="">
-                Select Category
-              </option>
-              <option value="1">Category 1</option>
-              <option value="2">Category 2</option>
-              <option value="3">Category 3</option>
-            </select>
-          </label>
-          <label className="input input-bordered input-sm flex items-center gap-2">
-            Supplier
-            <select
-              className="select select-ghost select-xs w-full"
-              name="supplier_id"
-              value={form.supplier_id}
-              onChange={handleChange}
-            >
-              <option disabled value="">
-                Select Supplier
-              </option>
-              <option value="1">Supplier 1</option>
-              <option value="2">Supplier 2</option>
-              <option value="3">Supplier 3</option>
-            </select>
-          </label>
+
+          <SelectSet
+            label="Category"
+            name="category_id"
+            form={form}
+            handleChange={handleChange}
+            options={categories}
+          />
+
+          <SelectSet
+            label="Supplier"
+            name="supplier_id"
+            form={form}
+            handleChange={handleChange}
+            options={suppliers}
+          />
+
           <label className="input input-bordered input-sm flex items-center gap-2">
             Cost Price
             <input

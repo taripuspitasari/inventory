@@ -20,7 +20,7 @@ const DialogEdit = forwardRef(({handleUpdate, selectedProduct}, ref) => {
         category_id: selectedProduct.category_id || "",
         cost_price: selectedProduct.cost_price || "",
         selling_price: selectedProduct.selling_price || "",
-        quantity: selectedProduct.quantity || "",
+        quantity: selectedProduct.quantity_in_stock || "",
         supplier_id: selectedProduct.supplier_id || "",
         reorder_level: selectedProduct.reorder_level || "",
       });

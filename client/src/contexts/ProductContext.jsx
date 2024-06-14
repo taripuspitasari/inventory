@@ -1,15 +1,19 @@
 import {createContext, useState, useEffect} from "react";
 import productService from "../services/productService";
+import categoryService from "../services/categoryService";
+import supplierService from "../services/supplierService";
 
 export const ProductContext = createContext();
 
 const ProductProvider = ({children}) => {
   const [products, setProducts] = useState([]);
+  const [categories, setCatergories] = useState([]);
+  const [suppliers, setSuppliers] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const data = await productService.getAll();
+        const data = await productService.getAllProducts();
         setProducts(data);
       } catch (err) {
         console.log(err);
@@ -18,6 +22,31 @@ const ProductProvider = ({children}) => {
 
     fetchProducts();
   }, [products]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const data = await categoryService.getAllCategories();
+        setCatergories(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    const fetchSuppliers = async () => {
+      try {
+        const data = await supplierService.getAllSuppliers();
+        setSuppliers(data);
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchSuppliers();
+  }, []);
 
   const addProduct = async newProduct => {
     try {
@@ -55,7 +84,15 @@ const ProductProvider = ({children}) => {
 
   return (
     <ProductContext.Provider
-      value={{products, setProducts, addProduct, handleDelete, handleUpdate}}
+      value={{
+        products,
+        setProducts,
+        addProduct,
+        handleDelete,
+        handleUpdate,
+        categories,
+        suppliers,
+      }}
     >
       {children}
     </ProductContext.Provider>
